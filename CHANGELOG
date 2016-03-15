@@ -1,3 +1,7 @@
+*0.1.1* (March 15, 2016)
+
+* Remove initial visit to the start page: `https://translate.google.com`.
+
 *0.1.0* (March 15, 2016)
 
 * Initial gem release
