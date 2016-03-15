@@ -1,5 +1,9 @@
 # Tr4n5l4te
 
+**Version: 0.1.0**
+
+[![Build Status](https://travis-ci.org/midwire/tr4n5l4te.svg?branch=master)](https://travis-ci.org/midwire/tr4n5l4te)
+
 Use Google Translate without an API key.
 
 Like me, maybe you've found that Google makes it a pain to work with their API. Tr4n5l4te gets around all that.
