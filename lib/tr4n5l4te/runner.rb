@@ -66,7 +66,7 @@ module Tr4n5l4te
         opt(
           :yaml_file,
           "A YAML locale file - filename determines source language 'en.yml' - English",
-          type: :string, required: true, short: 'y')
+          type: :string, required: false, short: 'y')
         opt(
           :lang,
           'Destination language',
@@ -98,6 +98,10 @@ module Tr4n5l4te
         puts('Valid languages:'.red + "\n\n")
         puts(Language.list.join(', ').yellow + "\n\n")
         Trollop.die(:lang, "'#{options[:lang]}' language unknown".red)
+      end
+      if !options[:yaml_file_given] || !File.exist?(options[:yaml_file])
+        puts('A YAML file is required:'.red + "\n\n")
+        Trollop.die(:yaml_file, "'#{options[:yaml_file]}' not found".red)
       end
       options[:lang] = Language.ensure_code(options[:lang])
     end

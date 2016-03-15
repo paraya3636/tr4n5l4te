@@ -2,8 +2,7 @@
 
 Use Google Translate without an API key.
 
-Like me, maybe you've found that Google makes it a pain to work with their API.
-Tr4n5l4te gets around all that.
+Like me, maybe you've found that Google makes it a pain to work with their API. Tr4n5l4te gets around all that.
 
 ## Installation
 
@@ -40,7 +39,11 @@ end
 
 To translate a YAML file:
 
-    $ ./exe/translate -y <path/to/yml/file> -l <destination-language>
+    $ ./exe/translate -y /path/to/yml/file -l "destination-language"
+
+To list all known languages
+
+    $ ./exe/translate -t
 
 ## Development
 
@@ -53,6 +56,11 @@ The specs are sprinkled with integration tests which will actually go out and hi
     $ INTEGRATION=1 rake spec
 
 Please be kind or Google is likely to ban your IP address.
+
+#### Spec Coverage
+
+    $ INTEGRATION=1 COVERAGE=1 rake spec
+    $ open coverage/index.html # if you are on OSX
 
 ## Contributing
 
