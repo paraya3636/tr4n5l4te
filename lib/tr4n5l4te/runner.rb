@@ -3,8 +3,6 @@ require 'colored'
 require 'fileutils'
 require 'midwire_common/string'
 
-require 'pry'
-
 module Tr4n5l4te
   class Runner
     attr_accessor :logger, :options, :count
