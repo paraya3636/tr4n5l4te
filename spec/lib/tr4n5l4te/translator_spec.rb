@@ -27,6 +27,16 @@ module Tr4n5l4te
         expect(translator).to_not receive(:load_cookies)
         expect(translator.translate('', :en, :es)).to eq('')
       end
+
+      it 'returns an empty string if the argument is nil' do
+        expect(translator).to_not receive(:load_cookies)
+        expect(translator.translate(nil, :en, :es)).to eq('')
+      end
+
+      it 'returns an empty string if the argument is whitespace' do
+        expect(translator).to_not receive(:load_cookies)
+        expect(translator.translate('   ', :en, :es)).to eq('')
+      end
     end
   end
 end

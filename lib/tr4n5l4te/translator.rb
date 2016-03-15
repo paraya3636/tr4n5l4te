@@ -12,7 +12,9 @@ module Tr4n5l4te
     end
 
     def translate(text, from_lang, to_lang)
-      return '' if text.trim.empty?
+      return '' if text.nil? || text == ''
+      text.strip!
+      return '' if text == ''
       encoded_text = URI.encode(text)
       url = "#{START_PAGE}/##{from_lang}/#{to_lang}/#{encoded_text}"
       load_cookies
