@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler/setup'
+
+require 'tr4n5l4te'
+require 'tr4n5l4te/runner'
+
+Tr4n5l4te::Runner.instance.run

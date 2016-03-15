@@ -1,0 +1,22 @@
+---
+en:
+  time_zone_detected: Het lijkt erop dat je tijdzone is <strong>% {zone_name} </ strong>.
+    U kunt dit wijzigen in uw <a href='%{profile_path}'> profiel instellingen </a>.
+  help:
+    public_link: Publieke link te sturen naar de klant om ze te vullen hun gegevens
+      zelf
+    logo_image: Dit logo zal worden weergegeven in de contactgegevens formulier dat
+      u sturen naar uw klanten.
+    active_tasks: 'Elke klant heeft een huidige taak: onvolledige taak dichtstbijzijnde
+      vervaldatum'
+    workflow_type_shoot: Nuttig voor bruiloft en portret shoots - uw taken deadlines
+      na boekdatum en vóór en na de datum shoot
+    workflow_type_product: Handig voor het album of prints orders - taken kunnen vervaldagen
+      na bestelling datum hebben
+    referrals:
+      custom_description: Sla uw eigen beschrijving van een fotograaf door één keer
+        te veranderen
+      incoming:
+        custom_description: Aangepaste beschrijving van uw collega voorzien voor u
+    workflows:
+      email_template: ''

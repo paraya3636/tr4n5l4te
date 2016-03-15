@@ -23,6 +23,8 @@ Or install it yourself as:
 
 ## Usage
 
+In your code:
+
 ```ruby
 translator = Tr4n5l4te::Translator.new
 english_strings = %w(
@@ -36,9 +38,21 @@ end
 # => cómo estás
 ```
 
+To translate a YAML file:
+
+    $ ./exe/translate -y <path/to/yml/file> -l <destination-language>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+### Specs
+
+The specs are sprinkled with integration tests which will actually go out and hit the live web. To run them:
+
+    $ INTEGRATION=1 rake spec
+
+Please be kind or Google is likely to ban your IP address.
 
 ## Contributing
 

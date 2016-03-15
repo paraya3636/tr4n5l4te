@@ -42,5 +42,7 @@ module Tr4n5l4te
   end
 
   autoload :Agent,      'tr4n5l4te/agent'
+  autoload :Language,   'tr4n5l4te/language'
+  autoload :Runner,     'tr4n5l4te/runner'
   autoload :Translator, 'tr4n5l4te/translator'
 end

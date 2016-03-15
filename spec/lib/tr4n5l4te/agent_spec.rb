@@ -19,7 +19,9 @@ module Tr4n5l4te
         let(:cookie_file) { '/tmp/bogus.yml' }
 
         before do
+          # rubocop:disable Style/RescueModifier
           File.delete(cookie_file) rescue nil
+          # rubocop:enable Style/RescueModifier
         end
 
         it 'stores the passed cookie file' do
@@ -46,11 +48,13 @@ module Tr4n5l4te
     end
 
     # NOTE: This test will hit a live URL - be cool!
-    context '.visit', integration: true do
-      it 'returns a hash with status' do
-        response = agent.visit(test_url)
-        expect(response).to be_a(Hash)
-        expect(response[:status]).to eq('success')
+    if ENV.fetch('INTEGRATION', false)
+      context '.visit', integration: true do
+        it 'returns a hash with status' do
+          response = agent.visit(test_url)
+          expect(response).to be_a(Hash)
+          expect(response[:status]).to eq('success')
+        end
       end
     end
 

@@ -2,11 +2,12 @@ require 'open-uri'
 
 module Tr4n5l4te
   class Translator
-    START_PAGE = 'https://translate.google.com/'
-    COOKIE_FILE = ""
-    DEFAULT_MIN_SLEEP = 3
+    START_PAGE = 'https://translate.google.com/'.freeze
+
+    attr_reader :sleep_time, :agent
 
     def initialize(args = {})
+      @sleep_time = args.fetch(:sleep_time, 2)
       @agent = Agent.new
       load_cookies
       agent.visit(START_PAGE)
@@ -25,10 +26,6 @@ module Tr4n5l4te
 
     private
 
-    def browser
-      agent.browser
-    end
-
     def store_cookies
       agent.store_cookies(Tr4n5l4te.cookie_file)
     end
@@ -38,15 +35,11 @@ module Tr4n5l4te
     end
 
     def sleep_default
-      sleep(DEFAULT_MIN_SLEEP)
+      sleep(sleep_time)
     end
 
     def browser
       agent.browser
-    end
-
-    def agent
-      @agent
     end
   end
 end
