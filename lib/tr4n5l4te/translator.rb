@@ -12,20 +12,32 @@ module Tr4n5l4te
     end
 
     def translate(text, from_lang, to_lang)
-      return '' if text.nil? || text == ''
-      text.strip!
-      return '' if text == ''
-      encoded_text = URI.encode(text)
-      url = "#{START_PAGE}/##{from_lang}/#{to_lang}/#{encoded_text}"
-      load_cookies
-      agent.visit(url)
-      store_cookies
-      sleep_default
+      encoded_text = validate_and_encode(text)
+      return '' if encoded_text == ''
+      smart_visit(translator_url(encoded_text, from_lang, to_lang))
       result_box = browser.find('#result_box')
       result_box.text
     end
 
     private
+
+    def validate_and_encode(text)
+      return '' if text.nil?
+      fail "Cannot translate a [#{text.class}]: '#{text}'" unless text.respond_to?(:gsub)
+      text.strip!
+      URI.encode(text)
+    end
+
+    def smart_visit(url)
+      load_cookies
+      agent.visit(url)
+      store_cookies
+      sleep_default
+    end
+
+    def translator_url(encoded_text, from_lang, to_lang)
+      "#{START_PAGE}/##{from_lang}/#{to_lang}/#{encoded_text}"
+    end
 
     def store_cookies
       agent.store_cookies(Tr4n5l4te.cookie_file)

@@ -1,12 +1,14 @@
 # Tr4n5l4te
 
-**Version: 0.1.2**
+**Version: 0.1.3**
 
 Use Google Translate without an API key.
 
 Like me, maybe you've found that Google makes it a pain to work with their API. Tr4n5l4te gets around all that.
 
 ## Installation
+
+First, install [PhantomJS](http://phantomjs.org/).
 
 Add this line to your application's Gemfile:
 
@@ -39,9 +41,17 @@ end
 # => cómo estás
 ```
 
+### Command Line
+
 To translate a YAML file:
 
     $ ./exe/translate -y /path/to/yml/file -l "destination-language"
+
+The translator will sleep for 2 seconds, by default, between each string translation. You can override that by passing in the amount of time, in seconds, you want it to sleep:
+
+    $ ./exe/translate -y config/locales/en.yml -l French -s 3
+
+Warning: If you pass in '0' and translate a large file, it is very likely that Google will ban your IP address.
 
 To list all known languages
 
