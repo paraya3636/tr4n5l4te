@@ -43,6 +43,16 @@ end
 
 ### Command Line
 
+    ➤ ./exe/translate -h
+    Options:
+      -y, --yaml-file=<s>     A YAML locale file - filename determines source language 'en.yml' - English
+      -l, --lang=<s>          Destination language
+      -i, --list              List known languages
+      -s, --sleep-time=<i>    Sleep time (default: 2)
+      -t, --timeout=<i>       Poltergeist timeout option (default: 30)
+      -v, --verbose           Be verbose with output
+      -h, --help              Show this message
+
 To translate a YAML file:
 
     $ ./exe/translate -y /path/to/yml/file -l "destination-language"
