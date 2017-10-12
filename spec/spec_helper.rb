@@ -1,5 +1,4 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'tr4n5l4te'
 
 if ENV['COVERAGE']
   require 'simplecov'

@@ -21,6 +21,11 @@ module Tr4n5l4te
       log_identifier(start_time)
       @count = 0
 
+      # configure
+      Tr4n5l4te.configure do |config|
+        config.timeout = options[:timeout]
+      end
+
       hash = YAML.load_file(options[:yaml_file])
       translated = process(hash)
       store_translation(translated)
@@ -72,11 +77,15 @@ module Tr4n5l4te
         opt(
           :list,
           'List known languages',
-          type: :boolean, required: false, short: 't')
+          type: :boolean, required: false)
         opt(
           :sleep_time,
           'Sleep time',
           type: :integer, default: 2, short: 's')
+        opt(
+          :timeout,
+          'Poltergeist timeout option - default 30',
+          type: :integer, default: 30, short: 't')
         opt(
           :verbose,
           'Be verbose with output',

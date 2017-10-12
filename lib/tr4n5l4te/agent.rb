@@ -4,7 +4,11 @@ require 'yaml'
 
 module Tr4n5l4te
   Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, js_errors: false)
+    Capybara::Poltergeist::Driver.new(
+      app,
+      js_errors: false,
+      timeout: Tr4n5l4te.configuration.timeout
+    )
   end
   Capybara.default_driver = :poltergeist
   Capybara.javascript_driver = :poltergeist
