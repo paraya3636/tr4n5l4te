@@ -1,0 +1,15 @@
+en:
+  time_zone_detected: "It looks like your timezone is <strong>%{zone_name}</strong>. You can change it in your <a href='%{profile_path}'>profile settings</a>."
+
+  help:
+    public_link:  "Public link to send to client to have them fill out their details themselves"
+    logo_image:   "This logo will be displayed in the contact details form you send to your clients."
+    active_tasks: "Each client has one current task: incomplete task with nearest due date"
+    workflow_type_shoot:   "Useful for wedding and portrait shoots - your tasks have deadlines after book date and before and after shoot date"
+    workflow_type_product: "Useful for album or prints orders - tasks can have due dates after order date"
+    referrals:
+      custom_description: "Save your own description of a photographer by changing it once"
+      incoming:
+        custom_description: "Custom description your colleague provided for you"
+    workflows:
+      email_template: ""

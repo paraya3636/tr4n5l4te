@@ -54,13 +54,16 @@ module Tr4n5l4te
     end
 
     def from_lang
-      File.basename(options[:yaml_file], '.yml')
+      md = File.basename(options[:yaml_file]).match(/^.+(\w\w)\.yml$/)
+      raise "Could not determine language from yaml file: '#{options[:yaml_file]}'" unless md
+      md[1]
     end
 
     def store_translation(translated)
       data = YAML.dump(translated)
       dir = File.dirname(options[:yaml_file])
-      File.open(File.join(dir, "#{options[:lang]}.yml"), 'w') { |f| f.write(data) }
+      base = File.basename(options[:yaml_file]).gsub(/#{from_lang}\.yml$/, '')
+      File.open(File.join(dir, "#{base}#{options[:lang]}.yml"), 'w') { |f| f.write(data) }
     end
 
     # rubocop:disable Metrics/MethodLength

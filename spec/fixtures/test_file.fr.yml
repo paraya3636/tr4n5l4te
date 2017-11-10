@@ -1,0 +1,22 @@
+---
+en:
+  time_zone_detected: Il semble que votre fuseau horaire soit <strong>% {zone_name}
+    <
+  help:
+    public_link: Lien public à envoyer au client pour qu'il remplisse lui-même ses
+      coordonnées
+    logo_image: Ce logo sera affiché dans le formulaire de coordonnées que vous envoyez
+      à vos clients.
+    active_tasks: 'Chaque client a une tâche en cours: tâche incomplète avec échéance
+      la plus proche'
+    workflow_type_shoot: Utile pour les photos de mariage et de portrait - vos tâches
+      ont des délais après la date du livre et avant et après la date de tournage
+    workflow_type_product: Utile pour les commandes d'albums ou d'impressions - les
+      tâches peuvent avoir des dates d'échéance après la date de la commande
+    referrals:
+      custom_description: Sauvegardez votre propre description d'un photographe en
+        la changeant une fois
+      incoming:
+        custom_description: Description personnalisée que votre collègue vous a fournie
+    workflows:
+      email_template: ''
