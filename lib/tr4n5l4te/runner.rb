@@ -54,13 +54,13 @@ module Tr4n5l4te
     end
 
     def from_lang
-      md = File.basename(options[:yaml_file]).match(/^.+(\w\w)\.yml$/)
+      md = File.basename(options[:yaml_file]).match(/^(\w\w)\.yml$/)
       raise "Could not determine language from yaml file: '#{options[:yaml_file]}'" unless md
       md[1]
     end
 
     def store_translation(translated)
-      data = YAML.dump(translated)
+      data = translated.to_yaml(line_width: -1)
       dir = File.dirname(options[:yaml_file])
       base = File.basename(options[:yaml_file]).gsub(/#{from_lang}\.yml$/, '')
       File.open(File.join(dir, "#{base}#{options[:lang]}.yml"), 'w') { |f| f.write(data) }
