@@ -88,6 +88,12 @@ Please be kind or Google is likely to ban your IP address.
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/midwire/tr4n5l4te.
 
+### Contributors
+
+Thanks to all of those who contribute!
+
+* @kirylpl - Fixed phantomjs selector, migration to Optimist gem
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
