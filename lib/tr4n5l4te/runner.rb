@@ -1,4 +1,4 @@
-require 'trollop'
+require 'optimist'
 require 'colored'
 require 'fileutils'
 require 'midwire_common/string'
@@ -68,7 +68,7 @@ module Tr4n5l4te
 
     # rubocop:disable Metrics/MethodLength
     def collect_args
-      Trollop.options do
+      Optimist.options do
         opt(
           :yaml_file,
           "A YAML locale file - filename determines source language 'en.yml' - English",
@@ -107,11 +107,11 @@ module Tr4n5l4te
       if !options[:lang_given] || !Language.valid?(options[:lang])
         puts('Valid languages:'.red + "\n\n")
         puts(Language.list.join(', ').yellow + "\n\n")
-        Trollop.die(:lang, "'#{options[:lang]}' language unknown".red)
+        Optimist.die(:lang, "'#{options[:lang]}' language unknown".red)
       end
       if !options[:yaml_file_given] || !File.exist?(options[:yaml_file])
         puts('A YAML file is required:'.red + "\n\n")
-        Trollop.die(:yaml_file, "'#{options[:yaml_file]}' not found".red)
+        Optimist.die(:yaml_file, "'#{options[:yaml_file]}' not found".red)
       end
       options[:lang] = Language.ensure_code(options[:lang])
     end

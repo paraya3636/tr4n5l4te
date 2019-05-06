@@ -28,5 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'colored', '~> 1'
   spec.add_dependency 'midwire_common', '~> 0.1'
   spec.add_dependency 'poltergeist', '~> 1.9'
-  spec.add_dependency 'trollop', '~> 2.1'
+  spec.add_dependency 'optimist'
 end
