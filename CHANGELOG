@@ -1,3 +1,7 @@
+*0.1.5* (May 06, 2019)
+
+* Fixed phantomjs selector, migration to Optimist gem - Thanks @kirylpl
+
 *0.1.4* (November 10, 2017)
 
 * Fix issue #3 - include original file basename in translated output filename
