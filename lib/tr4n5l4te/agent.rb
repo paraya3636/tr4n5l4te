@@ -7,7 +7,8 @@ module Tr4n5l4te
     Capybara::Poltergeist::Driver.new(
       app,
       js_errors: false,
-      timeout: Tr4n5l4te.configuration.timeout
+      timeout: Tr4n5l4te.configuration.timeout,
+      phantomjs_options: ['--load-images=no']
     )
   end
   Capybara.default_driver = :poltergeist

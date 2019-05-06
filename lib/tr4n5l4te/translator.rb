@@ -12,10 +12,11 @@ module Tr4n5l4te
     end
 
     def translate(text, from_lang, to_lang)
+      puts "Translating: #{text}"
       encoded_text = validate_and_encode(text)
       return '' if encoded_text == ''
       smart_visit(translator_url(encoded_text, from_lang, to_lang))
-      result_box = browser.find('#result_box')
+      result_box = browser.find('.tlid-translation')
       result_box.text
     end
 
