@@ -54,9 +54,8 @@ module Tr4n5l4te
     end
 
     def from_lang
-      md = File.basename(options[:yaml_file]).match(/^(\w\w)\.yml$/)
-      raise "Could not determine language from yaml file: '#{options[:yaml_file]}'" unless md
-      md[1]
+      # TODO: とりあえずen固定
+      "en"
     end
 
     def store_translation(translated)
