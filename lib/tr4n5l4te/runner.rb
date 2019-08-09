@@ -62,7 +62,8 @@ module Tr4n5l4te
       data = translated.to_yaml(line_width: -1)
       dir = File.dirname(options[:yaml_file])
       base = File.basename(options[:yaml_file]).gsub(/#{from_lang}\.yml$/, '')
-      File.open(File.join(dir, "#{base}#{options[:lang]}.yml"), 'w') { |f| f.write(data) }
+      # 同一ファイル名で上書き
+      File.open(File.join(dir, base), 'w') { |f| f.write(data) }
     end
 
     # rubocop:disable Metrics/MethodLength
