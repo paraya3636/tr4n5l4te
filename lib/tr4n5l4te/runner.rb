@@ -50,7 +50,8 @@ module Tr4n5l4te
     def translate(string)
       @count += 1
       puts("[#{string}]") if options[:verbose]
-      translator.translate(string, from_lang, options[:lang])
+      translated = translator.translate(string, from_lang, options[:lang])
+      '"' + translated + '"'
     end
 
     def translator
@@ -66,6 +67,7 @@ module Tr4n5l4te
       data = translated.to_yaml(line_width: -1)
       # yamlのセパレータ削除しないと動かない
       data.slice!("---\n")
+      data = data.delete("'")
 
       # dir = File.dirname(options[:yaml_file])
       # base = File.basename(options[:yaml_file]).gsub(/#{from_lang}\.yml$/, '')
