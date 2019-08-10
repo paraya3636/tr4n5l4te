@@ -26,11 +26,15 @@ module Tr4n5l4te
         config.timeout = options[:timeout]
       end
 
-      hash = YAML.load_file(options[:yaml_file])
-      translated = process(hash)
-      store_translation(translated)
+      # TODO: ここでディレクトリ指定できれば全自動でも行けるかも
+      Dir.glob("*.yml", base:options[:directory]) do |item|
+        filePath = "#{options[:directory]}/#{item}"
+        hash = YAML.load_file(filePath)
+        translated = process(hash)
+        store_translation(translated, filePath)
 
-      puts("Processed #{@count} strings in [#{Time.now - start_time}] seconds.".yellow)
+        puts("Processed #{@count} strings in [#{Time.now - start_time}] seconds.".yellow)
+      end
     end
 
     private
@@ -58,17 +62,21 @@ module Tr4n5l4te
       "en"
     end
 
-    def store_translation(translated)
+    def store_translation(translated, filePath)
       data = translated.to_yaml(line_width: -1)
-      dir = File.dirname(options[:yaml_file])
-      base = File.basename(options[:yaml_file]).gsub(/#{from_lang}\.yml$/, '')
+      # dir = File.dirname(options[:yaml_file])
+      # base = File.basename(options[:yaml_file]).gsub(/#{from_lang}\.yml$/, '')
       # 同一ファイル名で上書き
-      File.open(File.join(dir, base), 'w') { |f| f.write(data) }
+      File.open(filePath, 'w') { |f| f.write(data) }
     end
 
     # rubocop:disable Metrics/MethodLength
     def collect_args
       Optimist.options do
+        opt(
+            :directory,
+            "A YAML locale file - filename determines source language 'en.yml' - English",
+            type: :string, required: false, short: 'd')
         opt(
           :yaml_file,
           "A YAML locale file - filename determines source language 'en.yml' - English",
@@ -109,11 +117,13 @@ module Tr4n5l4te
         puts(Language.list.join(', ').yellow + "\n\n")
         Optimist.die(:lang, "'#{options[:lang]}' language unknown".red)
       end
+=begin
       if !options[:yaml_file_given] || !File.exist?(options[:yaml_file])
         puts('A YAML file is required:'.red + "\n\n")
         Optimist.die(:yaml_file, "'#{options[:yaml_file]}' not found".red)
       end
       options[:lang] = Language.ensure_code(options[:lang])
+=end
     end
     # rubocop:enable Metrics/AbcSize
 
