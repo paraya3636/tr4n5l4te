@@ -64,6 +64,7 @@ module Tr4n5l4te
 
     def store_translation(translated, filepath)
       data = translated.to_yaml(line_width: -1)
+      # yamlのセパレータ削除しないと動かない
       data.slice!("---\n")
 
       # dir = File.dirname(options[:yaml_file])
