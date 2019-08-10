@@ -28,10 +28,10 @@ module Tr4n5l4te
 
       # TODO: ここでディレクトリ指定できれば全自動でも行けるかも
       Dir.glob("*.yml", base:options[:directory]) do |item|
-        filePath = "#{options[:directory]}/#{item}"
-        hash = YAML.load_file(filePath)
+        filepath = "#{options[:directory]}/#{item}"
+        hash = YAML.load_file(filepath)
         translated = process(hash)
-        store_translation(translated, filePath)
+        store_translation(translated, filepath)
 
         puts("Processed #{@count} strings in [#{Time.now - start_time}] seconds.".yellow)
       end
