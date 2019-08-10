@@ -62,12 +62,14 @@ module Tr4n5l4te
       "en"
     end
 
-    def store_translation(translated, filePath)
+    def store_translation(translated, filepath)
       data = translated.to_yaml(line_width: -1)
+      data.slice!("---\n")
+
       # dir = File.dirname(options[:yaml_file])
       # base = File.basename(options[:yaml_file]).gsub(/#{from_lang}\.yml$/, '')
       # 同一ファイル名で上書き
-      File.open(filePath, 'w') { |f| f.write(data) }
+      File.open(filepath, 'w') { |f| f.write(data) }
     end
 
     # rubocop:disable Metrics/MethodLength
